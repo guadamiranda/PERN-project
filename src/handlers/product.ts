@@ -1,9 +1,13 @@
-import { Request, Response} from 'express'
-import Product from '../models/Product.model'
+import { check, validationResult} from 'express-validator';
+import Product from '../models/Product.model';
+import { Request, Response} from 'express';
 
 export const createProduct = async (req : Request, res : Response) => {
-    const product = new Product(req.body)
-    const savedProduct = await product.save()
-
-    res.json({data: savedProduct})
+    try{
+        const product = await Product.create(req.body)
+        res.json({data: product})
+    } catch(error){
+        console.log(error)
+    }
+    
 }
