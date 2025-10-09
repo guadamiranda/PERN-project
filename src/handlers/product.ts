@@ -1,4 +1,3 @@
-import { check, validationResult} from 'express-validator';
 import Product from '../models/Product.model';
 import { Request, Response} from 'express';
 
